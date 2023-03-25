@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
+﻿using System.Web;
 using Newtonsoft.Json;
-using RH_App.Models;
-using RH_App.Models.Spotify;
 using RH_App.Servises.Interfaces;
-//using static Microsoft.Maui.Controls.PlatformConfiguration.Android.Provider.DocumentsContract;
 
 namespace RH_App.Services
 {

@@ -4,11 +4,11 @@
 			 xmlns:vm="clr-namespace:RH_App.ViewModels"
 			 x:Class="RH_App.Views.DiscographyDetailPage"
 			 x:DataType="vm:DiscographyDetailViewModel"
-             BackgroundColor="White">
-    <ScrollView BackgroundColor="White">
+             BackgroundImageSource="Black">
+    <ScrollView>
         <VerticalStackLayout Margin="12">
-            <Label Text="{Binding Item.album}" FontSize="Large" TextColor="Black" />
-            <Label Text="{Binding Item.albumInfo}" FontSize="Default" TextColor="Black"/>
+            <Label Text="{Binding Item.album}" FontSize="Large" TextColor="White" />
+            <Label Text="{Binding Item.albumInfo}" FontSize="Default" TextColor="White"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

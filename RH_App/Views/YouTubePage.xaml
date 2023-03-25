@@ -6,8 +6,7 @@
              xmlns:m="clr-namespace:RH_App.Models.Spotify"
 			 x:Class="RH_App.Views.YouTubePage"
 			 x:DataType="vm:YouTubeViewModel"
-             BackgroundColor="white"
-             Title="Spotify">
+             Title="RockHub">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -32,12 +31,11 @@
                                 <RowDefinition Height="130"/>
                                 <RowDefinition Height="40"/>
                             </Grid.RowDefinitions>
-                            <!--<Image Source="{Binding AlbumCover}" Grid.Row="0" HeightRequest="100" VerticalOptions="FillAndExpand" />-->
                             <toolkit:AvatarView ImageSource="{Binding AlbumCover}" Text="{Binding AlbumName}" 
                                                 HeightRequest="120"
                                                 WidthRequest="120"
                                                 CornerRadius="75"/>
-                            <Label Text="{Binding AlbumName}" FontSize="Header" TextColor="Black" Grid.Row="1" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                            <Label Text="{Binding AlbumName}" FontSize="Header" TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Black}}" Grid.Row="1" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
                         </Grid>
                     </Frame>
                 </DataTemplate>

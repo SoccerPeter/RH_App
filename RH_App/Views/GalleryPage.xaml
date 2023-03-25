@@ -16,14 +16,16 @@
                            Grid.Row="1"
                            IsVisible="{Binding IsLoading}"/>
         <CarouselView ItemsSource="{Binding Items}"
-                      IndicatorView="indicatorView">
+                      IndicatorView="indicatorView"
+                      VerticalOptions="Center" Margin="0,100,0,0">
             <CarouselView.ItemTemplate>
                 <DataTemplate  x:DataType="m:Bilder">
                     <StackLayout>
                         <Frame HasShadow="True"
                                BorderColor="DarkGray"
                                CornerRadius="5"
-                               HeightRequest="300"
+                               HeightRequest="330"
+                               WidthRequest="330"
                                HorizontalOptions="Center"
                                VerticalOptions="Center">
                             <StackLayout>

@@ -7,7 +7,7 @@
              xmlns:m="clr-namespace:RH_App.Models.Spotify"
              xmlns:local="clr-namespace:RH_App.ViewModels.Views"
              x:DataType="vm:YoutubeDtetailsPageViewModel"
-             BackgroundColor="Black">
+             Title="RockHub">
 
     <ContentPage.Content>
         <Grid>
@@ -28,7 +28,7 @@
                    WidthRequest="200"
                    Grid.Row="1"/>
         <ScrollView Grid.Row="2">
-            <CollectionView ItemsSource="{Binding ItemTracks}" BackgroundColor="White" HeightRequest="800">
+            <CollectionView ItemsSource="{Binding ItemTracks}" HeightRequest="800">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="m:SpotifyAlbum">
                         <Frame Margin="4" Padding="12">
@@ -37,7 +37,7 @@
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="80"/>
                                 </Grid.RowDefinitions>
-                                <Label Text="{Binding SongName}" FontSize="Header" TextColor="Black" Grid.Row="0" Margin="10,10,0,0" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                    <Label Text="{Binding SongName}" FontSize="Header" TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Black}}" Grid.Row="0" Margin="10,10,0,0" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
                                 <toolkit:MediaElement Source="{Binding SongUri}"
                                                       ShouldShowPlaybackControls="True" 
                                                       HeightRequest="75"
