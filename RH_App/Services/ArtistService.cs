@@ -12,6 +12,7 @@ namespace RH_App.Services
         /// <summary>
         /// Get info about the artist
         /// </summary>
+        /// <param name="artist"></param>
         public async Task<ArtistInfo> GetArtist(string artist)
         {
             try
