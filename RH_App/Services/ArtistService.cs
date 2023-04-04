@@ -125,6 +125,7 @@ namespace RH_App.Services
         }
 
         public async Task<IEnumerable<SpotifyAlbum>> GetSpotifyAlbums(string id) {
+            //Get right spotify Id
             int last = id.LastIndexOf(":");
             int langd = id.Length;
             var albumId = id.Substring(14, 22);
