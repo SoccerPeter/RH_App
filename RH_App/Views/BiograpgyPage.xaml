@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:vm="clr-namespace:RH_App.ViewModels"
+			 x:Class="RH_App.Views.BiograpgyPage"
+			 x:DataType="vm:BiograpgyViewModel"
+             xmlns:models="clr-namespace:RH_App.Models"
+             Title="RockHub"
+             BackgroundColor="White">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border WidthRequest="350">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="15" />
+            </Border.StrokeShape>
+            <SearchBar Placeholder="Search" 
+                   x:Name="searchBar"
+                   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"
+                   SearchCommand="{Binding GetArtistCommandCommand}"
+                   Grid.Row="0"
+                   BackgroundColor="Black" 
+                   TextColor="White" 
+                   
+                   />
+        </Border>
+        <ActivityIndicator IsRunning="true"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Grid.Row="1"
+                           IsVisible="{Binding IsLoading}"
+                           Color="Black"/>
+        <CollectionView ItemsSource="{Binding Artists}" SelectionMode="None" Grid.Row="1">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Result">
+                    <Grid Padding="10" ColumnDefinitions="*">
+                        <VerticalStackLayout Padding="5" Spacing="5">
+                            <Border WidthRequest="350">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="15" />
+                                </Border.StrokeShape>
+                                <Image x:Name="artistImage"
+                                   Source="{Binding Image}"
+                                   Aspect="Fill"
+                                   HeightRequest="250"
+                                   WidthRequest="350"/>
+                            </Border>
+                            <Label Text="{Binding Group}" FontSize="Large" HorizontalTextAlignment="Start" TextColor="Black"></Label>
+                            <Label Text="Started" FontSize="Caption" HorizontalTextAlignment="Start" TextColor="Black"></Label>
+                            <Label Text="{Binding intFormedYear}" FontSize="Default" HorizontalTextAlignment="Start" TextColor="Black"></Label>
+                            <Label Text="Genre" FontSize="Caption" HorizontalTextAlignment="Start" TextColor="Black"></Label>
+                            <Label Text="{Binding strStyle}" FontSize="Default" HorizontalTextAlignment="Start" TextColor="Black"></Label>
+                            <Label Text="Recordlabel" FontSize="Caption" HorizontalTextAlignment="Start" TextColor="Black"></Label>
+                            <Label Text="{Binding strLabel}" FontSize="Default" HorizontalTextAlignment="Start" TextColor="Black"></Label>
+                            <Label Text="Bio" FontSize="Caption" HorizontalTextAlignment="Start" TextColor="Black"></Label>
+                            <Label Text="{Binding GroupInfo}" LineBreakMode="WordWrap" TextColor="Black"></Label>
+                        </VerticalStackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

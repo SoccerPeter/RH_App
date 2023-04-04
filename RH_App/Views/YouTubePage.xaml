@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+			 xmlns:vm="clr-namespace:RH_App.ViewModels"
+             xmlns:m="clr-namespace:RH_App.Models.Spotify"
+			 x:Class="RH_App.Views.YouTubePage"
+			 x:DataType="vm:YouTubeViewModel"
+             Title="RockHub">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ActivityIndicator IsRunning="True"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="Center"
+                           Grid.Row="0"
+                           IsVisible="{Binding IsBusy}"
+                           Grid.RowSpan="1"/>
+        <CollectionView ItemsSource="{Binding Items}" BackgroundColor="White" Grid.Row="1">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:SpotifyArtist">
+                    <Frame Margin="4" Padding="12">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:YouTubeViewModel}}, Path=GoToDetailsCommand}" CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="130"/>
+                                <RowDefinition Height="40"/>
+                            </Grid.RowDefinitions>
+                            <toolkit:AvatarView ImageSource="{Binding AlbumCover}" Text="{Binding AlbumName}" 
+                                                HeightRequest="120"
+                                                WidthRequest="120"
+                                                CornerRadius="75"/>
+                            <Label Text="{Binding AlbumName}" FontSize="Header" TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Black}}" Grid.Row="1" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        </Grid>
+</ContentPage>

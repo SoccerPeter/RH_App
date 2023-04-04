@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+	x:Class="RH_App.AppShell"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:views="clr-namespace:RH_App.Views"
+	xmlns:local="clr-namespace:RH_App"
+    xmlns:models="clr-namespace:RH_App.Models"
+     Shell.TabBarBackgroundColor="Black"
+    Shell.TabBarUnselectedColor="White"
+    Shell.TabBarTitleColor="Red">
+
+    <TabBar>
+        <Tab Title="Biograpgy">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FontAwesomeRegular" Glyph="{x:Static models:IconFont.FileAudio}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:BiograpgyPage}"/>
+        </Tab>
+        <Tab Title="Discography">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FontAwesomeRegular" Glyph="{x:Static models:IconFont.RectangleList}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:DiscographyPage}"/>
+        </Tab>
+        <Tab Title="Similar">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FontAwesomeRegular" Glyph="{x:Static models:IconFont.RectangleList}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:SimilarPage}" />
+        </Tab>
+        <Tab Title="Gallery">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FontAwesomeRegular" Glyph="{x:Static models:IconFont.Images}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:GalleryPage}"/>
+        </Tab>
+        <Tab Title="Spotify">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FontAwesomeRegular" Glyph="{x:Static models:IconFont.Spotify}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:YouTubePage}"/>
+        </Tab>
+    </TabBar>
+</Shell>

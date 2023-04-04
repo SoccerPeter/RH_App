@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="RH_App.ViewModels.Views.YoutubeDtetailsPagePage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:vm="clr-namespace:RH_App.ViewModels.ViewModels"
+             xmlns:m="clr-namespace:RH_App.Models.Spotify"
+             xmlns:local="clr-namespace:RH_App.ViewModels.Views"
+             x:DataType="vm:YoutubeDtetailsPageViewModel"
+             Title="RockHub">
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="210"/>
+                <RowDefinition Height="*"/> 
+            </Grid.RowDefinitions>
+
+        <Label Text="{Binding Item.AlbumName}"
+                   HorizontalOptions="Center"
+                   TextColor="White"
+                   VerticalOptions="Center"
+            Grid.Row="0"/>
+            <Image Source="{Binding Item.AlbumCover}"
+                   VerticalOptions="Center"
+                   HeightRequest="200"
+                   WidthRequest="200"
+                   Grid.Row="1"/>
+        <ScrollView Grid.Row="2">
+            <CollectionView ItemsSource="{Binding ItemTracks}" HeightRequest="800">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:SpotifyAlbum">
+                        <Frame Margin="4" Padding="12">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="80"/>
+                                </Grid.RowDefinitions>
+                                    <Label Text="{Binding SongName}" FontSize="Header" TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Black}}" Grid.Row="0" Margin="10,10,0,0" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                <toolkit:MediaElement Source="{Binding SongUri}"
+                                                      ShouldShowPlaybackControls="True" 
+                                                      HeightRequest="75"
+                                                      WidthRequest="200"
+                                                      Grid.Row="1"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:vm="clr-namespace:RH_App.ViewModels"
+			 xmlns:m="clr-namespace:RH_App.Models"
+			 x:Class="RH_App.Views.DiscographyPage"
+			 x:DataType="vm:DiscographyViewModel"
+             xmlns:views="clr-namespace:RH_App.Views"
+             Title="RockHub">
+    <Grid
+        RowDefinitions="30,*"
+        RowSpacing="10">
+        <ActivityIndicator IsRunning="true"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="Center"
+                           Grid.Row="0"
+                           IsVisible="{Binding IsLoading}"
+                           Grid.RowSpan="1"/>
+        <CollectionView ItemsSource="{Binding Items}" BackgroundColor="White" Grid.Row="1">
+            <CollectionView.Behaviors>
+                <views:IOSFixInfiniteHeightCollectionView />
+            </CollectionView.Behaviors>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:Album">
+                    <Frame Margin="4" Padding="12">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:DiscographyViewModel}}, Path=GoToDetailsCommand}" CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="75" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding strAlbumThumb}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"/>
+                            <Label Text="{Binding strAlbum}" FontSize="Caption" TextColor="White" Grid.Column="1" Grid.Row="0" Margin="10,0,0,0" FontAttributes="Bold"/>
+                            <Label Text="{Binding  strDescriptionEN}" FontSize="Micro" TextColor="White" Grid.Column="1" Grid.Row="1" Margin="10,0,0,0" MaxLines="3" />
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

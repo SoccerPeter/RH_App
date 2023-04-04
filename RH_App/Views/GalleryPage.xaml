@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+			 xmlns:vm="clr-namespace:RH_App.ViewModels"
+             xmlns:m="clr-namespace:RH_App.Models"
+			 x:Class="RH_App.Views.GalleryPage"
+			 x:DataType="vm:GalleryViewModel"
+             Title="">
+
+
+    <StackLayout VerticalOptions="Center">
+        <ActivityIndicator IsRunning="true"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Grid.Row="1"
+                           IsVisible="{Binding IsLoading}"/>
+        <CarouselView ItemsSource="{Binding Items}"
+                      IndicatorView="indicatorView"
+                      VerticalOptions="Center" Margin="0,100,0,0">
+            <CarouselView.ItemTemplate>
+                <DataTemplate  x:DataType="m:Bilder">
+                    <StackLayout>
+                        <Frame HasShadow="True"
+                               BorderColor="DarkGray"
+                               CornerRadius="5"
+                               HeightRequest="330"
+                               WidthRequest="330"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                            <StackLayout>
+                                <Image Source="{Binding imageUrl}" 
+                                       Aspect="Fill"
+                                       HeightRequest="300"
+                                       WidthRequest="300"
+                                       HorizontalOptions="Center" />
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+        <IndicatorView x:Name="indicatorView"
+                       IndicatorsShape="Square"
+                       IndicatorColor="LightGray"
+                       SelectedIndicatorColor="DarkGray"
+                       HorizontalOptions="Center"
+                       Margin="0,0,0,40" />
+    </StackLayout>
+</ContentPage>
