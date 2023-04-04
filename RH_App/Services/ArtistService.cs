@@ -9,6 +9,9 @@ namespace RH_App.Services
 {
     public class ArtistService : IArtist
     {
+        /// <summary>
+        /// Get info about the artist
+        /// </summary>
         public async Task<ArtistInfo> GetArtist(string artist)
         {
             try
